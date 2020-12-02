@@ -23,3 +23,34 @@
 
 // Of course, your expense report is much larger. Find the two entries that sum to 2020; what do you get if you multiply them together?
 
+const find2020ThenMultiply = (array) => {
+  var hash = {}
+  for (let i = 0; i < array.length; i++) {
+    var diff = 2020 - array[i]
+    if (hash[diff]) {
+      return diff
+    }
+    hash[array[i]] = true
+  }
+}
+
+// const nums = [979,366,299,675,1721,1456]
+var fs = require('fs');
+var input = fs.readFileSync("./day_1_input.txt").toString().split('\n');
+var nums = []
+for(i in input) {
+  let val = parseInt(input[i])
+  nums.push(val);
+}
+console.log(nums);
+
+var first = 0
+var second = 0
+
+first = find2020ThenMultiply(nums)
+second = 2020 - first
+// console.log(first);
+// console.log(second);
+
+const ans = first * second
+console.log(ans)

@@ -18,3 +18,84 @@
 
 // How many passwords are valid according to their policies?
 
+const input = "1-3 a: abcde";
+var minCount = 0;
+var maxCount = 0;
+var requiredChar = '';
+var password = "";
+
+// Search through the string to get the minimum number the required character has to show up in password
+const getMinCount = (string) => {
+  let count = 1;
+  let idx = 1;
+  while (string[idx] != '-') {
+    count += 1;
+    idx += 1;
+  }
+  if (count === 1) {
+    return string[0];
+  } else {
+    return string.slice(0,count);
+  }
+}
+
+// Search through the string to get the maximum number the required character can show up in password
+const getMaxCount = (string) => {
+  let start = 0;
+  let count = 0;
+  let idx = 1;
+  while (string[idx] != ' ') {
+    if (string[idx] == '-') {
+      count += 1;
+      idx += 1;
+      start = idx;
+    }
+    count += 1;
+    idx += 1;
+  }
+  if (count === 1) {
+    return string[start]
+  } else {
+    return string.slice(start, start+count)
+  }
+}
+
+// Search through the string to get the required character in password
+const getRequiredChar = (string) => {
+  let regex = RegExp(/[a-z]/)
+  let arr = string.match(regex)
+  return arr[0]
+}
+
+// Iterate through the string and return true if password is valid, false otherwise
+const validPassword = (string, minCount, maxCount, requiredChar) => {
+  let idx = 0
+  while (string[idx] != ':') {
+    idx += 1
+  }
+  idx += 1
+  let count = 0
+  while (idx != string.length) {
+    if (string[idx] === requiredChar) {
+      count += 1
+    }
+    idx += 1
+  }
+  if (count >= minCount && count <= maxCount) {
+    return true
+  } else {
+    return false
+  }
+}
+
+minCount = getMinCount(input);
+// console.log(minCount);
+
+maxCount = getMaxCount(input);
+// console.log(maxCount);
+
+requiredChar = getRequiredChar(input);
+// console.log(requiredChar);
+
+console.log(validPassword(input, minCount, maxCount, requiredChar));
+

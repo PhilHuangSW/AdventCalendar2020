@@ -18,6 +18,64 @@
 
 // How many passwords are valid according to their policies?
 
+var count = 0
+// Does all the checking in one pass. This assumes the file is formatted correctly starting with "minCount-maxCount requiredChar: password"
+const isPasswordValid = (string) => {
+  let minCount = 0
+  let maxCount = 0
+  let startMax = 0
+  let requiredChar = ''
+  let idx = 0
+  let charCount = 0
+  while (string[idx] != '-') {
+    idx += 1
+  }
+  if (idx === 1) {
+    minCount = string[0]
+  } else {
+    minCount = string.slice(0, idx)
+  }
+  idx += 1
+  startMax = idx
+  while (string[idx] != ' ') {
+    idx += 1
+  }
+  if (idx === (startMax + 1)) {
+    maxCount = string[startMax]
+  } else {
+    maxCount = string.slice(startMax, idx)
+  }
+  idx += 1
+  requiredChar = string[idx]
+  idx += 2
+  while (idx != string.length) {
+    if (string[idx] == requiredChar) {
+      charCount += 1
+    }
+    idx += 1
+  }
+  if (charCount >= minCount && charCount <= maxCount) {
+    count += 1
+  }
+  // console.log(`min: ${minCount} -- max: ${maxCount} -- char: ${requiredChar} -- count: ${charCount}`)
+}
+
+var fs = require('fs');
+var input = fs.readFileSync("./day2Input.txt").toString().split('\n');
+
+input.forEach(password => isPasswordValid(password));
+console.log(count);
+
+// const in1 = "1-3 a: abcde"
+// const in2 = "1-3 b: cdefg"
+// const in3 = "2-9 c: ccccccccc"
+// isPasswordValid(in1)
+// isPasswordValid(in2)
+// isPasswordValid(in3)
+// console.log(count)
+
+//////////////////// FIRST ATTEMPT ////////////////////
+
 // const input = "1-3 a: abcde";
 // var minCount = 0;
 // var maxCount = 0;
@@ -114,59 +172,6 @@
 // console.log(count);
 // console.log(isValid(h))
 
-var count = 0
-// Does all the checking in one pass. This assumes the file is formatted correctly starting with "minCount-maxCount requiredChar: password"
-const isPasswordValid = (string) => {
-  let minCount = 0
-  let maxCount = 0
-  let startMax = 0
-  let requiredChar = ''
-  let idx = 0
-  let charCount = 0
-  while (string[idx] != '-') {
-    idx += 1
-  }
-  if (idx === 1) {
-    minCount = string[0]
-  } else {
-    minCount = string.slice(0, idx)
-  }
-  idx += 1
-  startMax = idx
-  while (string[idx] != ' ') {
-    idx += 1
-  }
-  if (idx === (startMax + 1)) {
-    maxCount = string[startMax]
-  } else {
-    maxCount = string.slice(startMax, idx)
-  }
-  idx += 1
-  requiredChar = string[idx]
-  idx += 2
-  while (idx != string.length) {
-    if (string[idx] == requiredChar) {
-      charCount += 1
-    }
-    idx += 1
-  }
-  if (charCount >= minCount && charCount <= maxCount) {
-    count += 1
-  }
-  // console.log(`min: ${minCount} -- max: ${maxCount} -- char: ${requiredChar} -- count: ${charCount}`)
-}
-
-// const in1 = "1-3 a: abcde"
-// const in2 = "1-3 b: cdefg"
-// const in3 = "2-9 c: ccccccccc"
-// isPasswordValid(in1)
-// isPasswordValid(in2)
-// isPasswordValid(in3)
-// console.log(count)
 
 
-var fs = require('fs');
-var input = fs.readFileSync("./day2Input.txt").toString().split('\n');
 
-input.forEach(password => isPasswordValid(password));
-console.log(count);

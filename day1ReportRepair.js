@@ -41,7 +41,7 @@ const find2020ThenMultiplyTogether = (array) => {
 
 // const nums = [979,366,299,675,1721,1456]
 var fs = require('fs');
-var input = fs.readFileSync("./day_1_input.txt").toString().split('\n');
+var input = fs.readFileSync("./day1Input.txt").toString().split('\n');
 var nums = []
 for(i in input) {
   let val = parseInt(input[i])

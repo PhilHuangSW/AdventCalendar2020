@@ -5,7 +5,7 @@
 // In your expense report, what is the product of the three entries that sum to 2020?
 
 var fs = require('fs');
-var input = fs.readFileSync("./day_1_input.txt").toString().split('\n');
+var input = fs.readFileSync("./day1Input.txt").toString().split('\n');
 var nums = []
 for(i in input) {
   let val = parseInt(input[i])

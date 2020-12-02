@@ -27,6 +27,8 @@ const isPasswordValid = (string) => {
   let requiredChar = ''
   let idx = 0
   let charCount = 0
+
+  // finds minCount
   while (string[idx] != '-') {
     idx += 1
   }
@@ -35,6 +37,8 @@ const isPasswordValid = (string) => {
   } else {
     minCount = string.slice(0, idx)
   }
+
+  // finds maxCount
   idx += 1
   startMax = idx
   while (string[idx] != ' ') {
@@ -45,8 +49,12 @@ const isPasswordValid = (string) => {
   } else {
     maxCount = string.slice(startMax, idx)
   }
+
+  // finds requiredChar
   idx += 1
   requiredChar = string[idx]
+
+  // counts the number of times requiredChar appears in password
   idx += 2
   while (idx != string.length) {
     if (string[idx] == requiredChar) {
@@ -54,9 +62,13 @@ const isPasswordValid = (string) => {
     }
     idx += 1
   }
+
+  // checks if password is valid with criteria
   if (charCount >= minCount && charCount <= maxCount) {
     count += 1
   }
+
+  // logs everything to console for validating
   // console.log(`min: ${minCount} -- max: ${maxCount} -- char: ${requiredChar} -- count: ${charCount}`)
 }
 

@@ -23,15 +23,20 @@
 
 // Of course, your expense report is much larger. Find the two entries that sum to 2020; what do you get if you multiply them together?
 
-const find2020ThenMultiply = (array) => {
-  var hash = {}
+const find2020 = (array) => {
+  let hash = {};
+  let first = 0;
+  let second = 0;
   for (let i = 0; i < array.length; i++) {
-    var diff = 2020 - array[i]
+    let diff = 2020 - array[i];
     if (hash[diff]) {
-      return diff
+      first = diff;
+      second = array[i];
+      break;
     }
-    hash[array[i]] = true
+    hash[array[i]] = true;
   }
+  return first * second
 }
 
 // const nums = [979,366,299,675,1721,1456]
@@ -42,15 +47,7 @@ for(i in input) {
   let val = parseInt(input[i])
   nums.push(val);
 }
-console.log(nums);
+// console.log(nums);
 
-var first = 0
-var second = 0
-
-first = find2020ThenMultiply(nums)
-second = 2020 - first
-// console.log(first);
-// console.log(second);
-
-const ans = first * second
+const ans = find2020(nums)
 console.log(ans)

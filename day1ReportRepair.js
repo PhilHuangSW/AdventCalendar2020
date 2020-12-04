@@ -23,6 +23,7 @@
 
 // Of course, your expense report is much larger. Find the two entries that sum to 2020; what do you get if you multiply them together?
 
+// First searches the array for 2 numbers that add to 2020, then returns the multiple of both numbers 
 const find2020ThenMultiplyTogether = (array) => {
   let hash = {};
   let first = 0;
@@ -50,4 +51,4 @@ for(i in input) {
 // console.log(nums);
 
 const ans = find2020ThenMultiplyTogether(nums)
-console.log(ans)
+console.log(ans) // 494475 --> Correct Answer!

@@ -70,7 +70,7 @@ var fs = require('fs');
 var input = fs.readFileSync("./day2Input.txt").toString().split('\n');
 
 input.forEach(password => isPasswordValid(password));
-console.log(count);
+console.log(count); // 729 --> Correct Answer!
 
 
 // const in1 = "1-3 a: abcde"

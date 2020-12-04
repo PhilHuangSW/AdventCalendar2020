@@ -26,6 +26,7 @@ nums = nums.sort((a,b) => a - b);
 // nums.forEach(function(v) {file.write(v + '\n');});
 // file.end();
 
+// Finds 3 numbers in array that add up to 2020, then returns the multiple of the three numbers
 const find3SumTo2020ThenMultiplyTogether = (array) => {
   var arr = []
   for (let i = 0; i < array.length; i++) {
@@ -51,4 +52,4 @@ const find3SumTo2020ThenMultiplyTogether = (array) => {
 }
 
 var ans = find3SumTo2020ThenMultiplyTogether(nums);
-console.log(ans);
+console.log(ans); // 267520550 --> Correct Answer!

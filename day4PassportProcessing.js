@@ -42,3 +42,55 @@
 
 // Count the number of valid passports - those that have all required fields. Treat cid as optional. In your batch file, how many passports are valid?
 
+var fs = require('fs');
+var input = fs.readFileSync("./day4Input.txt").toString().split('\r\n\r\n');
+
+// create arrays to check if all passport required data is present
+var passportWithCid = ['byr','iyr','eyr','hgt','hcl','ecl','pid','cid']
+passportWithCid.sort();
+var passportWithoutCid = ['byr','iyr','eyr','hgt','hcl','ecl','pid']
+passportWithoutCid.sort();
+
+// total number of valid passports from input file
+var count = 0;
+
+// checks whether a passport has all the required data and increments count if the passport is valid
+const validPassport = (passport) => {
+  for (let i = 0; i < passport.length; i++) {
+    let passportData = passport[i].split(/[' ','\n','\r\n']/);
+    let checkData = [];
+    // console.log(passportData);
+    for (let j = 0; j < passportData.length; j++) {
+      if (passportData[j] != '') {
+        // console.log(passportData[j])
+        checkData.push(passportData[j].slice(0,3));
+        // console.log(checkData);
+      }
+    }
+
+    // we sort because the check has to match exactly the order of our checker array
+    // ['byr','iyr','eyr','hgt','hcl','ecl','pid','cid'] <- specifically in this order with CID
+    // ['byr','iyr','eyr','hgt','hcl','ecl','pid'] <- specifically in this order without CID
+    checkData = checkData.sort();
+    if (checkArrayEqual(checkData, passportWithoutCid) || checkArrayEqual(checkData, passportWithCid)) {
+      count += 1;
+    }
+  }
+}
+
+// checks if 2 arrays are equal to each other, returns true if equal, false otherwise
+const checkArrayEqual = (array1, array2) => {
+  if (array1.length != array2.length) {
+    return false;
+  } else {
+    for (let i = 0; i < array1.length; i++) {
+      if (array1[i] != array2[i]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+validPassport(input)
+console.log(count) // 192 --> Correct answer!

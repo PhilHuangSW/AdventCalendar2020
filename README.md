@@ -5,3 +5,6 @@
 ## Day 2: [Password Philosophy](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day2PasswordPhilosophy.js)
 - ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day2Part2.js)
 - ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day2Input.txt)
+## Day 3: [Toboggan Trajectory](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day3TobogganTracjectory.js)
+- ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day3Part2.js)
+- ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day3Input.txt)

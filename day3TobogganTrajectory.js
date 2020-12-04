@@ -50,3 +50,38 @@
 
 // Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?
 
+// const path = ['..##.......',
+//             '#...#...#..',
+//             '.#....#..#.',
+//             '..#.#...#.#',
+//             '.#...##..#.',
+//             '..#.##.....',
+//             '.#.#.#....#',
+//             '.#........#',
+//             '#.##...#...',
+//             '#...##....#',
+//             '.#..#...#.#'
+// ]
+
+// Read path from input file
+var fs = require('fs');
+var input = fs.readFileSync("./day3Input.txt").toString().split("\n");
+// console.log(input[0]);
+
+const treeEncountersCount = (path) => {
+  let count = 0;
+  let rightMove = 0;
+  // console.log(path[0].length-1);
+  for (let i = 0; i < path.length; i++) {
+    rightMove %= (path[i].length-1);
+    if (path[i][rightMove] === '#') {
+      count += 1;
+    }
+    rightMove += 3;
+  }
+  return count;
+}
+
+var trees = 0;
+trees = treeEncountersCount(input);
+console.log(trees);

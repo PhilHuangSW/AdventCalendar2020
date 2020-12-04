@@ -68,6 +68,7 @@ var fs = require('fs');
 var input = fs.readFileSync("./day3Input.txt").toString().split("\n");
 // console.log(input[0]);
 
+// Finds all trees encountered given a path and a default trajectory (right 3, down 1)
 const treeEncountersCount = (path) => {
   let count = 0;
   let rightMove = 0;
@@ -84,4 +85,4 @@ const treeEncountersCount = (path) => {
 
 var trees = 0;
 trees = treeEncountersCount(input);
-console.log(trees);
+console.log(trees); // 169 --> Correct Answer!

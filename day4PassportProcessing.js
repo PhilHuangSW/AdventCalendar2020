@@ -46,9 +46,9 @@ var fs = require('fs');
 var input = fs.readFileSync("./day4Input.txt").toString().split('\r\n\r\n');
 
 // create arrays to check if all passport required data is present
-var passportWithCid = ['byr','iyr','eyr','hgt','hcl','ecl','pid','cid']
+var passportWithCid = ['byr','iyr','eyr','hgt','hcl','ecl','pid','cid'];
 passportWithCid.sort();
-var passportWithoutCid = ['byr','iyr','eyr','hgt','hcl','ecl','pid']
+var passportWithoutCid = ['byr','iyr','eyr','hgt','hcl','ecl','pid'];
 passportWithoutCid.sort();
 
 // total number of valid passports from input file

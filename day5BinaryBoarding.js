@@ -36,3 +36,59 @@
 // BBFFBBFRLL: row 102, column 4, seat ID 820.
 // As a sanity check, look through your list of boarding passes. What is the highest seat ID on a boarding pass?
 
+var fs = require('fs')
+var input = fs.readFileSync("./day5Input.txt").toString().split("\n")
+
+const calculateSeatRow = (boardingRow) => {
+  let startRow = 0
+  let endRow = 127
+  for (let i = 0; i < boardingRow.length; i++) {
+    var diff = endRow - startRow
+    if (boardingRow[i] === 'F') {
+      endRow -= Math.ceil(diff/2)
+    } else {
+      startRow += Math.ceil(diff/2)
+    }
+    // console.log(`${startRow} -- ${endRow} -- ${diff}`)
+  }
+  // console.log(`${startRow} -- ${endRow} -- ${diff}`)
+  return startRow
+}
+
+const calculateSeatCol = (boardingCol) => {
+  let startCol = 0
+  let endCol = 7
+  for (let i = 0; i < boardingCol.length; i++) {
+    var diff = endCol - startCol
+    if (boardingCol[i] === 'L') {
+      endCol -= Math.ceil(diff/2)
+    } else {
+      startCol += Math.ceil(diff/2)
+    }
+    // console.log(`${startCol} -- ${endCol} -- ${diff}`)
+  }
+  return startCol
+}
+
+const calculateSeatID = (row, col) => {
+  return row * 8 + col
+}
+
+var highest = 0
+const calculateHighestSeatID = (binaryBoarding) => {
+  for (let i = 0; i < binaryBoarding.length; i++) {
+    let row = calculateSeatRow(binaryBoarding[i].slice(0,7))
+    let col = calculateSeatCol(binaryBoarding[i].slice(7,10))
+    let seatID = calculateSeatID(row, col)
+    // console.log(`row: ${row} -- col: ${col} -- highest: ${highest} -- seatID: ${seatID}`)
+    if (seatID > highest) {
+      highest = seatID
+    }
+  }
+  return highest
+}
+
+console.log(calculateHighestSeatID(input))  // 991 --> Correct Answer!
+// console.log(calculateHighestSeatID('BFFFBBFRRR'))
+// console.log(calculateHighestSeatID('FFFBBBFRRR'))
+// console.log(calculateHighestSeatID('BBFFBBFRLL'))

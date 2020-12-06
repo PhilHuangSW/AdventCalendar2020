@@ -38,3 +38,36 @@
 
 // For each group, count the number of questions to which anyone answered "yes". What is the sum of those counts?
 
+var fs = require('fs')
+var input = fs.readFileSync("./day6Input.txt").toString().split("\r\n\r\n")
+
+// returns the number of unique answers from a group of answers
+// i.e. group1 = 'abcx', 'abcy', 'abcz' -> 6 because unique answers are 'a', 'b', 'c', 'x', 'y', 'z'
+const getUniqueAnswersFromGroup = (answers) => {
+  let answersSet = new Set()
+  for (let i = 0; i < answers.length; i++) {
+    answersSet.add(answers[i])
+  }
+  // console.log(answersSet)
+  return answersSet.size
+}
+
+// returns the sum of an array
+const sumAnswersFromAllGroups = (array) => {
+  let sum = 0
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i]
+  }
+  return sum
+}
+
+// returns the sum of all unique answers from all groups of passengers
+var answersArray = []
+const getAllAnswers = (answers) => {
+  for (let i = 0; i < answers.length; i++) {
+    answersArray.push(getUniqueAnswersFromGroup(answers[i].split('\r\n').join('')))
+  }
+  return sumAnswersFromAllGroups(answersArray)
+}
+
+console.log(getAllAnswers(input))  // 6911 --> Correct Answer!

@@ -17,3 +17,6 @@
 ## Day 6: [Custom Customs](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day6CustomCustoms.js)
 - ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day6Part2.js)
 - ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day6Input.txt)
+## Day 7: [Handy Haversacks](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day7HandyHaversacks.js)
+- ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day7Part2.js)
+- ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day7Input.txt)

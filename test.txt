@@ -1,7 +1,75 @@
-a
-b
-c
+shiny gold -> pale indigo - 3 pale yellow
+  pale indigo -> 5 drab blue - 3 posh fuchsia
+    (5)drab blue -> 2 dark gray - 4 dotted lime - 3 shiny green(x) - 3 wavy olive
+      (10)dark gray -> 2 bright white(x) - 2 posh red(x)
+      (20)dotted lime -> 5 light silver(x) - 1 shiny green(x) - 1 mirrored aqua(x)
+      (15)wavy olive -> 4 muted white - 5 muted silver(x)
+        (60)muted white -> 5 mirrored aqua(x) - 2 muted fuchsia
+          (120)muted fuchsia -> 1 bright blue
+            (120)bright blue -> 5 mirrored yellow(x) - 5 light silver(x)
+              
+    (3)posh fuchsia -> 5 dark aqua - 1 muted white - 2 shiny green(x) - 5 dull black
+      (15)dark aqua -> 5 wavy beige - 3 pale yellow - 2 bright white(x) - 2 muted violet(x)
+        (75)wavy beige -> 2 muted violet(x) - 1 bright white(x) - 5 vibrant red - 1 faded lavender
+          (375)vibrant red -> 2 muted fuchsia - 5 bright blue
+            (750)muted fuchsia -> 1 bright blue
+              (750)bright blue -> 5 mirrored yellow(x) - 5 light silver(x)
+            (1875)bright blue -> 5 mirrored yellow(x) - 5 light silver(x)
+          (75)faded lavender -> 1 mirrored yellow(x) - 4 vibrant plum(x)
+        (45)pale yellow -> 3 dull silver(x) - 1 shiny green(x) - 5 muted silver(x)
+      (3)muted white -> 5 mirrored aqua(x) - 2 muted fuchsia
+        (6)muted fuchsia -> 1 bright blue
+          (6)bright blue -> 5 mirrored yellow(x) - 5 light silver(x)
+      (15)dull black -> 1 dark gray - 1 mirrored yellow(x) - 4 dark aqua
+        (15)dark gray -> 2 bright white(x) - 2 posh red(x)
+        (60)dark aqua -> 5 wavy beige - 3 pale yellow - 2 bright white(x) - 2 muted violet(x)
+          (300)wavy beige -> 2 muted violet(x) - 1 bright white(x) - 5 vibrant red - 1 faded lavender
+            (1500)vibrant red -> 2 muted fuchsia - 5 bright blue
+              (3000)muted fuchsia -> 1 bright blue
+                (3000)bright blue -> 5 mirrored yellow(x) - 5 light silver(x)
+              (7500)bright blue -> 5 mirrored yellow(x) - 5 light silver(x)
+            (300)faded lavender -> 1 mirrored yellow(x) - 4 vibrant plum(x)
+          (180)pale yellow -> 3 dull silver(x) - 1 shiny green(x) - 5 muted silver(x)
+  
+  (3)pale yellow -> 3 dull silver(x) - 1 shiny green(x) - 5 muted silver(x)
 
-1
-2
-3
+
+console.log(3 + 9 + 3 + 15 + 1 + 5 + 3 + 10 + 20 + 15 + 15 + 20 + 20 + 100 + 20 + 20 + 60 + 75 + 300 + 120 + 120 + 600 + 600 + 15 + 3 + 6 + 15 + 75 + 45 + 30 + 30 + 150 + 75 + 375 + 75 + 750 + 1875 + 3750 + 3750 + 9375 + 9375 + 75 + 300 + 135 + 45 + 225 + 15 + 6 + 6 + 30 + 30 + 15 + 15 + 60 + 30 + 30 + 300 + 180 + 120 + 120 + 600 + 300 + 1500 + 300 + 3000 + 7500 + 3000 + 15000 + 15000 + 37500 + 37500 + 300 + 1200 + 540 + 180 + 900)
+
+
+shiny gold bags contain 1 pale indigo bag, 3 pale yellow bags.
+pale indigo bags contain 5 drab blue bags, 3 posh fuchsia bags.
+pale yellow bags contain 3 dull silver bags, 1 shiny green bag, 5 muted silver bags.
+drab blue bags contain 2 dark gray bags, 4 dotted lime bags, 3 shiny green bags, 3 wavy olive bags.
+posh fuchsia bags contain 5 dark aqua bags, 1 muted white bag, 2 shiny green bags, 5 dull black bags.
+dull silver bags contain no other bags.
+shiny green bags contain no other bags.
+muted silver bags contain no other bags.
+dark gray bags contain 2 bright white bags, 2 posh red bags.
+dotted lime bags contain 5 light silver bags, 1 shiny green bag, 1 mirrored aqua bag.
+shiny green bags contain no other bags.
+wavy olive bags contain 4 muted white bags, 5 muted silver bags.
+dark aqua bags contain 5 wavy beige bags, 3 pale yellow bags, 2 bright white bags, 2 muted violet bags.
+muted white bags contain 5 mirrored aqua bags, 2 muted fuchsia bags.
+dull black bags contain 1 dark gray bag, 1 mirrored yellow bag, 4 dark aqua bags.
+bright white bags contain no other bags.
+posh red bags contain no other bags.
+light silver bags contain no other bags.
+mirrored aqua bags contain no other bags.
+mirrored yellow bags contain no other bags.
+muted fuchsia bags contain 1 bright blue bag.
+wavy beige bags contain 2 muted violet bags, 1 bright white bag, 5 vibrant red bags, 1 faded lavender bag.
+muted violet bags contain no other bags.
+bright blue bags contain 5 mirrored yellow bags, 5 light silver bags.
+vibrant red bags contain 2 muted fuchsia bags, 5 bright blue bags.
+faded lavender bags contain 1 mirrored yellow bag, 4 vibrant plum bags.
+
+
+
+
+
+
+
+
+
+

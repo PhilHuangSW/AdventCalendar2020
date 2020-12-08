@@ -87,4 +87,4 @@ const run = (instructions) => {
   }
 }
 
-run(input)
+run(input)  // 2051 --> Correct Answer!

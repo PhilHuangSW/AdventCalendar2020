@@ -20,3 +20,6 @@
 ## Day 7: [Handy Haversacks](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day7HandyHaversacks.js)
 - ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day7Part2.js)
 - ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day7Input.txt)
+## Day 8: [Handheld Halting](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day8HandheldHalting.js)
+- ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day8Part2.js)
+- ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day8Input.txt)

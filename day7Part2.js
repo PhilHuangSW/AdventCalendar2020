@@ -28,6 +28,13 @@ var fs = require('fs')
 var input = fs.readFileSync("./day7Input.txt").toString().split("\r\n")
 // console.log(input[0])
 
+var data = []
+
+const arrayifyInput = (array) => {
+  
+}
+
+
 class TreeNode {
   constructor(value) {
     this.value = value
@@ -108,18 +115,6 @@ test = ["shiny gold bags contain 2 dark red bags, 3 red bags.",
 "dark blue bags contain 2 dark violet bags.",
 "dark violet bags contain no other bags."]
 
-var shinyGold = new TreeNode([1, 'shiny gold'])
-parseBags(shinyGold, shinyGold.value[0], test, shinyGold.value[1])
-// console.log(shinyGold.child.value)
-
-const dfs = (tree) => {
-  if (tree.child !== undefined) {
-    dfs(tree.child)
-  } 
-  console.log(tree.value)
-}
-
-dfs(shinyGold)
 
 
 const findColorBag = (bags, color) => {

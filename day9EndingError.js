@@ -43,3 +43,63 @@
 // In this example, after the 5-number preamble, almost every number is the sum of two of the previous 5 numbers; the only number that does not follow this rule is 127.
 
 // The first step of attacking the weakness in the XMAS data is to find the first number in the list (after the preamble) which is not the sum of two of the 25 numbers before it. What is the first number that does not have this property?
+
+var fs = require('fs')
+var input = fs.readFileSync("./day9Input.txt").toString().split("\r\n")
+
+var data = []
+for (let i = 0; i < input.length; i++) {
+  data.push(parseInt(input[i]))
+}
+
+var test = [35,
+            20,
+            15,
+            25,
+            47,
+            40,
+            62,
+            55,
+            65,
+            95,
+            102,
+            117,
+            150,
+            182,
+            127,
+            219,
+            299,
+            277,
+            309,
+            576]
+
+const findInvalidNumber = (list, preamble) => {
+  let myList = new Array(preamble)
+  let mySet = new Set()
+  for (let i = 0; i < preamble; i++) {
+    myList[i] = (list[i])
+    mySet.add(list[i])
+  }
+  for (let i = preamble; i < list.length; i++) {
+    if (validNumberChecker(myList, mySet, list[i]) === true) {
+      mySet.delete(myList.shift())
+      myList.push(list[i])
+      mySet.add(list[i])
+    } else {
+      console.log(`Failed -- list[i]: ${list[i]}`)
+      break
+    }
+  }
+}
+
+const validNumberChecker = (list, set, number) => {
+  for (let i = 0; i < list.length; i++) {
+    let diff = number - list[i]
+    if (set.has(diff)) {
+      return true
+    }
+  }
+  return false
+}
+
+findInvalidNumber(data, 25)

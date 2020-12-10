@@ -77,3 +77,101 @@
 // In this larger example, in a chain that uses all of the adapters, there are 22 differences of 1 jolt and 10 differences of 3 jolts.
 
 // Find a chain that uses all of your adapters to connect the charging outlet to your device's built-in adapter and count the joltage differences between the charging outlet, the adapters, and your device. What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?
+
+// var test = [16,
+//             10,
+//             15,
+//             5,
+//             1,
+//             11,
+//             7,
+//             19,
+//             6,
+//             12,
+//             4
+// ]
+
+// var test2 = [28,
+//              33,
+//              18,
+//              42,
+//              31,
+//              14,
+//              46,
+//              20,
+//              48,
+//              47,
+//              24,
+//              23,
+//              49,
+//              45,
+//              19,
+//              38,
+//              39,
+//              11,
+//              1,
+//              32,
+//              25,
+//              35,
+//              8,
+//              17,
+//              7,
+//              9,
+//              4,
+//              2,
+//              34,
+//              10,
+//              3
+// ]
+
+// console.log(test2.sort(function(a,b){
+//   return a - b
+// }))
+
+// var differences = []
+
+// for (let i = 0; i < test2.length-1; i++) {
+//   differences.push(test2[i+1] - test2[i])
+// }
+
+// console.log(differences)
+
+var fs = require('fs')
+var input = fs.readFileSync("./day10Input.txt").toString().split("\r\n")
+
+// Converts the input into an array that is sorted as well as has the starting value of 0 (charging outlet) and your device's built in adapter which has a value of +3 higher than the highest value in the input array
+const getData = (array) => {
+  let data = []
+  data.push(0)
+  for (let i = 0; i < array.length; i++) {
+    data.push(parseInt(array[i]))
+  }
+  data.sort(function(a,b){
+    return a - b
+  })
+  data.push(data[data.length-1] + 3)
+  console.log(data)
+  return data
+}
+
+var inputData = getData(input)
+
+// Since we're only dealing with 1 difference and 3 difference charges, we'll have a running tally of them then multiply the 2 together to get the answer we're looking for
+const findDifferences = (adapters) => {
+  let oneCount = 0
+  let threeCount = 0
+  for (let i = 0; i < adapters.length-1; i++) {
+    let diff = adapters[i+1] - adapters[i]
+    if (diff === 1) {
+      oneCount += 1
+    } else if (diff === 3) {
+      threeCount += 1
+    } else {
+      console.log('Something\'s wrong!')
+    }
+  }
+  let ans = oneCount * threeCount
+  console.log(`oneCount: ${oneCount} -- threeCount: ${threeCount} -- ans: ${ans}`)
+}
+
+findDifferences(inputData)  // 2380 --> Correct Answer!

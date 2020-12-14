@@ -35,3 +35,79 @@
 // To initialize your ferry's docking program, you need the sum of all values left in memory after the initialization program completes. (The entire 36-bit address space begins initialized to the value 0 at every address.) In the above example, only two values in memory are not zero - 101 (at address 7) and 64 (at address 8) - producing a sum of 165.
 
 // Execute the initialization program. What is the sum of all values left in memory after it completes?
+
+var fs = require('fs')
+var input = fs.readFileSync("./day14Input.txt").toString().split("\r\n")
+var test = ['mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X','mem[8] = 11','mem[7] = 101','mem[8] = 0']
+
+const datify = (array) => {
+  let data = []
+  for (let i = 0; i < array.length; i++) {
+    let dataObject = []
+    let arrayObject = array[i].split(" = ")
+    if (arrayObject[0] === 'mask') {
+      dataObject.push(arrayObject[0])
+      dataObject.push(arrayObject[1])
+    } else {
+      let idx = 4
+      while (arrayObject[0][idx] !== ']') {
+        idx += 1
+      }
+      dataObject.push(parseInt(arrayObject[0].slice(4, idx)))
+      dataObject.push(parseInt(arrayObject[1]))
+    }
+    data.push(dataObject)
+  }
+  return data
+}
+
+var data = datify(input)
+// console.log(data)
+
+const decimalToBinary = (decimal) => {
+  let binary = decimal.toString(2)
+  let zeros = ''
+  if (binary.length === 36) {
+    return binary
+  } else {
+    for (let i = binary.length; i < 36; i++) {
+      zeros += '0'
+    }
+    return zeros + binary
+  }
+  
+}
+
+const binaryToDecimal = (binary) => {
+  return parseInt(binary, 2)
+}
+
+const applyMask = (mask, value) => {
+  let result = ''
+  for (let i = 0; i < mask.length; i++) {
+    if (mask[i] === 'X') {
+      result += value[i]
+    } else {
+      result += mask[i]
+    }
+  }
+  return result
+}
+
+const dockingProgram = (bitmask) => {
+  let mask = bitmask[0][1]
+  let mem = {}
+  for (let i = 1; i < bitmask.length; i++) {
+    if (bitmask[i][0] === 'mask') {
+      mask = bitmask[i][1]
+    } else {
+      mem[bitmask[i][0]] = binaryToDecimal(applyMask(mask, decimalToBinary(bitmask[i][1])))
+    }
+  }
+  let sum = 0
+  console.log(mem)
+  Object.entries(mem).forEach(([key, value]) => sum += value)
+  return sum
+}
+
+console.log(dockingProgram(data))  // 10050490168421 --> Correct Answer!

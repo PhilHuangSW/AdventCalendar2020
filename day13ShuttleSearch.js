@@ -43,3 +43,46 @@
 
 // What is the ID of the earliest bus you can take to the airport multiplied by the number of minutes you'll need to wait for that bus?
 
+var fs = require('fs')
+var input = fs.readFileSync("./day13Input.txt").toString().split("\r\n")
+
+const datify = (array) => {
+  let departTime = array[0]
+  let times = []
+  let splitTimes = array[1].split(",")
+  for (let i = 0; i < splitTimes.length; i++) {
+    let numRegex = /[0-9]/
+    if (splitTimes[i].match(numRegex)) {
+      times.push(parseInt(splitTimes[i]))
+    }
+  }
+  return [departTime, times]
+}
+
+var data = datify(input)
+var depart = data[0]
+var times = data[1]
+
+const findEarliestBus = (departTime, timeTable) => {
+  let earliest = Infinity
+  let busID = 0
+  for (let i = 0; i < timeTable.length; i++) {
+    let remainder = departTime % timeTable[i]
+    if (remainder === 0) {
+      return timeTable[i]
+    } else {
+      let diff = Math.abs(remainder - timeTable[i])
+      if (diff < earliest) {
+        earliest = diff
+        busID = timeTable[i]
+      }
+    }
+  }
+  return [earliest, busID]
+}
+
+var early = findEarliestBus(depart, times)
+var departure = early[0]
+var id = early[1]
+
+console.log(departure * id)  // 1915 --> Correct Answer!

@@ -38,3 +38,6 @@
 ## Day 13: [Shuttle Search](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day13ShuttleSearch.js)
 - ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day13Part2.js)
 - ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day13Input.txt)
+## Day 14: [Docking Data](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day14DockingData.js)
+- ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day14Part2.js)
+- ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day14Input.txt)

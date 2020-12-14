@@ -32,3 +32,6 @@
 ## Day 11: [Seating System](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day11SeatingSystem.js)
 - ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day11Part2.js)
 - ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day11Input.txt)
+## Day 12: [Rain Risk](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day12RainRisk.js)
+- ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day12Part2.js)
+- ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day12Input.txt)

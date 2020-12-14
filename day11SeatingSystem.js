@@ -84,28 +84,149 @@
 
 var fs = require('fs')
 var input = fs.readFileSync("./day11Input.txt").toString().split("\r\n")
-var test = [L.LL.LL.LL,
-            LLLLLLL.LL,
-            L.L.L..L..,
-            LLLL.LL.LL,
-            L.LL.LL.LL,
-            L.LLLLL.LL,
-            ..L.L.....,
-            LLLLLLLLLL,
-            L.LLLLLL.L,
-            L.LLLLL.LL]
+var test = ['L.LL.LL.LL',
+            'LLLLLLL.LL',
+            'L.L.L..L..',
+            'LLLL.LL.LL',
+            'L.LL.LL.LL',
+            'L.LLLLL.LL',
+            '..L.L.....',
+            'LLLLLLLLLL',
+            'L.LLLLLL.L',
+            'L.LLLLL.LL']
 
 const arrangeSeats = (seatingChart) => {
   let newSeatingChart = []
   for (let i = 0; i < seatingChart.length; i++) {
-
+    let newRow = ''
+    if (i === 0) {
+      let seating = seatingChart.slice(0,2)
+      // console.log(seating)
+      newSeatingChart.push(checkRows(seating, true))
+    } else if (i === seatingChart.length-1) {
+      let seating = seatingChart.slice(seatingChart.length-2, seatingChart.length)
+      // console.log(seating)
+      newSeatingChart.push(checkRows(seating, false))
+    } else {
+      let seating = seatingChart.slice(i-1, i+2)
+      // console.log(seating)
+      newSeatingChart.push(checkRows(seating, false))
+    }
+    // console.log('---------------')
   }
+  return newSeatingChart
 }
 
-const checkRows = (seatingRows) => {
+const checkRows = (seatingRows, top) => {
   let newRow = ''
-  if (seatingRows.length === 2) {
-
+  if (seatingRows.length === 2 && top === true) {
+    for (let i = 0; i < seatingRows[0].length; i++) {
+      if (seatingRows[0][i] === '.') {
+        newRow += '.'
+      } else if (i === 0 && seatingRows[0][i] === 'L') {
+        if (seatingRows[0][i+1] === '#' || seatingRows[1][i] === '#' || seatingRows[1][i+1] === '#') {
+          newRow += 'L'
+        } else {
+          newRow += '#'
+        }
+      } else if (i === 0 && seatingRows[0][i] === '#') {
+        newRow += '#'
+      } else if (i === seatingRows[0].length-1 && seatingRows[0][i] === 'L') {
+        if (seatingRows[0][i-1] === '#' || seatingRows[1][i] === '#' || seatingRows[1][i-1] === '#') {
+          newRow += 'L'
+        } else {
+          newRow += '#'
+        }
+      } else if (i === seatingRows[0].length-1 && seatingRows[0][i] === '#') {
+        newRow += '#'
+      } else if (seatingRows[0][i] === 'L') {
+        if (seatingRows[0][i-1] === '#' || seatingRows[0][i+1] === '#' || seatingRows[1][i] === '#' || seatingRows[1][i-1] === '#' || seatingRows[1][i+1] === '#') {
+          newRow += 'L'
+        } else {
+          newRow += '#'
+        }
+      } else if (seatingRows[0][i] === '#') {
+        let count = 0
+        if (seatingRows[0][i-1] === '#') {
+          count += 1
+        }
+        if (seatingRows[0][i+1] === '#') {
+          count += 1
+        }
+        if (seatingRows[1][i-1] === '#') {
+          count += 1
+        }
+        if (seatingRows[1][i] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        if (seatingRows[1][i+1] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        newRow += '#'
+      }
+    }
+  } else if (seatingRows.length === 2 && top === false) {
+    for (let i = 0; i < seatingRows[1].length; i++) {
+      if (seatingRows[1][i] === '.') {
+        newRow += '.'
+      } else if (i === 0 && seatingRows[0][i] === 'L') {
+        if (seatingRows[1][i+1] === '#' || seatingRows[0][i] === '#' || seatingRows[0][i+1] === '#') {
+          newRow += 'L'
+        } else {
+          newRow += '#'
+        }
+      } else if (i === 0 && seatingRows[1][i] === '#') {
+        newRow += '#'
+      } else if (i === seatingRows[1].length-1 && seatingRows[1][i] === 'L') {
+        if (seatingRows[1][i-1] === '#' || seatingRows[0][i] === '#' || seatingRows[0][i-1] === '#') {
+          newRow += 'L'
+        } else {
+          newRow += '#'
+        }
+      } else if (i === seatingRows[1].length-1 && seatingRows[1][i] === '#') {
+        newRow += '#'
+      } else if (seatingRows[1][i] === 'L') {
+        if (seatingRows[1][i-1] === '#' || seatingRows[1][i+1] === '#' || seatingRows[0][i] === '#' || seatingRows[0][i-1] === '#' || seatingRows[0][i+1] === '#') {
+          newRow += 'L'
+        } else {
+          newRow += '#'
+        }
+      } else if (seatingRows[1][i] === '#') {
+        let count = 0
+        if (seatingRows[1][i-1] === '#') {
+          count += 1
+        }
+        if (seatingRows[1][i+1] === '#') {
+          count += 1
+        }
+        if (seatingRows[0][i-1] === '#') {
+          count += 1
+        }
+        if (seatingRows[0][i] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        if (seatingRows[0][i+1] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        newRow += '#'
+      }
+    }
   } else {
     for (let i = 0; i < seatingRows[1].length; i++) {
       if (seatingRows[1][i] === '.') {
@@ -175,11 +296,100 @@ const checkRows = (seatingRows) => {
         }
         newRow += '#'
       } else if (seatingRows[1][i] === 'L') {
-        
+        if (seatingRows[0][i-1] === '#' || seatingRows[0][i] === '#' || seatingRows[0][i+1] === '#' || seatingRows[1][i-1] === '#' || seatingRows[1][i+1] === '#' || seatingRows[2][i-1] === '#' || seatingRows[2][i] === '#' || seatingRows[2][i+1] === '#') {
+          newRow += 'L'
+        } else {
+          newRow += '#'
+        }
+      } else if (seatingRows[1][i] === '#') {
+        let count = 0
+        if (seatingRows[0][i-1] === '#') {
+          count += 1
+        }
+        if (seatingRows[0][i] === '#') {
+          count += 1
+        }
+        if (seatingRows[0][i+1] === '#') {
+          count += 1
+        }
+        if (seatingRows[1][i-1] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        if (seatingRows[1][i+1] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        if (seatingRows[2][i-1] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        if (seatingRows[2][i] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        if (seatingRows[2][i+1] === '#') {
+          count += 1
+          if (count === 4) {
+            newRow += 'L'
+            continue
+          }
+        }
+        newRow += '#'
       }
     }
   }
+  return newRow
 }
+
+const arraysEqual = (array1, array2) => {
+  if (array1 === array2) return true
+  if (array1 === null || array2 === null) return false
+  if (array1.length !== array2.length) return false
+  for (let i = 0; i < array1.length; i++) {
+    if (array1[i] !== array2[i]) {
+      return false
+    }
+  }
+  return true
+}
+
+const countOccupiedSeats = (seatingChart) => {
+  let previous = []
+  let count = 0
+  while (arraysEqual(seatingChart, previous) === false) {
+    count += 1
+    previous = seatingChart
+    seatingChart = arrangeSeats(seatingChart)
+  }
+  console.log(count)
+  // console.log(seatingChart)
+  // console.log(previous)
+  let occupied = 0
+  for (let i = 0; i < seatingChart.length; i++) {
+    for (let j = 0; j < seatingChart[i].length; j++) {
+      if (seatingChart[i][j] === '#') {
+        occupied += 1
+      }
+    }
+  }
+  return occupied
+}
+
+var totalOccupiedSeats = countOccupiedSeats(input)
+console.log(totalOccupiedSeats)  // 2113 --> Correct Answer!
 
 // for each row, check if it needs to switch from # -> L and L -> #
 // if checkRows only has 2 rows, that means it's either the top row or bottom row

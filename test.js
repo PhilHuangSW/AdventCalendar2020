@@ -1,5 +1,3 @@
-var new1= ''
-new1 += '.'
-new1 += '#'
-new1 += 'L'
-console.log(new1)
+var li = ['li','il','ll','ii']
+
+console.log(li.slice(0, 3))

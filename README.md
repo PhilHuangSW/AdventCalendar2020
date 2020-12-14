@@ -35,3 +35,6 @@
 ## Day 12: [Rain Risk](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day12RainRisk.js)
 - ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day12Part2.js)
 - ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day12Input.txt)
+## Day 13: [Shuttle Search](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day13ShuttleSearch.js)
+- ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day13Part2.js)
+- ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day13Input.txt)

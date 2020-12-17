@@ -1,7 +1,13 @@
-var my = new Set()
-var a = {10:[1]}
-my.add(a)
-var b = {10:[1]}
-console.log(my.has(b))
+var map = new Map()
 
-console.log(my)
+map.set(10, 1)
+// console.log(map.get(10))
+map.set(10, 2)
+// console.log(map.get(10))
+// console.log(map.has(10))
+// console.log(map.has(2))
+map.set(2, 1)
+// map.forEach(([key,value]) => console.log(key))
+// console.log(map.entries)
+// console.log(map.keys)
+console.log(map.values())

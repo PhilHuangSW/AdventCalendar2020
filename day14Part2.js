@@ -44,3 +44,52 @@
 
 // Execute the initialization program using an emulator for a version 2 decoder chip. What is the sum of all values left in memory after it completes?
 
+var fs = require('fs')
+var input = fs.readFileSync("./day14Input.txt").toString().split("\r\n")
+var test = ['mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X','mem[8] = 11','mem[7] = 101','mem[8] = 0']
+
+const datify = (array) => {
+  let data = []
+  for (let i = 0; i < array.length; i++) {
+    let dataObject = []
+    let arrayObject = array[i].split(" = ")
+    if (arrayObject[0] === 'mask') {
+      dataObject.push(arrayObject[0])
+      dataObject.push(arrayObject[1])
+    } else {
+      let idx = 4
+      while (arrayObject[0][idx] !== ']') {
+        idx += 1
+      }
+      dataObject.push(parseInt(arrayObject[0].slice(4, idx)))
+      dataObject.push(parseInt(arrayObject[1]))
+    }
+    data.push(dataObject)
+  }
+  return data
+}
+
+var data = datify(test)
+// console.log(data)
+
+const decimalToBinary = (decimal) => {
+  let binary = decimal.toString(2)
+  let zeros = ''
+  if (binary.length === 36) {
+    return binary
+  } else {
+    for (let i = binary.length; i < 36; i++) {
+      zeros += '0'
+    }
+    return zeros + binary
+  }
+  
+}
+
+const binaryToDecimal = (binary) => {
+  return parseInt(binary, 2)
+}
+
+const applyMask = (mask, value) => {
+  
+}

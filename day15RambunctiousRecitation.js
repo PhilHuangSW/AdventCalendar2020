@@ -43,36 +43,35 @@ var data = []
 for (let i = 0; i < input.length; i++) {
   data.push(parseInt(input[i]))
 }
-var test = []
+var test = [0,3,6]
 
 const findPrevious = (gameNumbers, sameNumber, startingIndex) => {
-  let indices = []
   for (let i = startingIndex; i >= 0; i--) {
     if (gameNumbers[i] === sameNumber) {
-      indices.push(i)
-      if (indices.length === 2) {
-        break
-      }
+      return i
     }
   }
-  return indices
 }
 
 const numAtTurn = (turn, startingNumbers) => {
-  let gameNumbers = startingNumbers
+  let gameNumbers = new Array(turn)
+  for (let i = 0; i < startingNumbers.length; i++) {
+    gameNumbers[i] = startingNumbers[i]
+  }
+  // console.log(gameNumbers)
+  // console.log(gameNumbers.length)
   let gameSet = new Set()
   for (let i = 0; i < startingNumbers.length-1; i++) {
     gameSet.add(startingNumbers[i])
   }
-  for (let i = gameNumbers.length; i < turn; i++) {
+  for (let i = startingNumbers.length; i < turn; i++) {
     // console.log(gameNumbers[i-1])
     if (gameSet.has(gameNumbers[i-1])) {
-      let diff = []
-      diff = findPrevious(gameNumbers, gameNumbers[i-1], i-1)
+      var diff = findPrevious(gameNumbers, gameNumbers[i-1], i-2)
       // console.log(diff)
-      gameNumbers.push(diff[0] - diff[1])
+      gameNumbers[i] = (i-1) - diff
     } else {
-      gameNumbers.push(0)
+      gameNumbers[i] = 0
       gameSet.add(gameNumbers[i-1])
     }
     // console.log(gameNumbers)

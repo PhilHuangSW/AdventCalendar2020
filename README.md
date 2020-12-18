@@ -44,3 +44,6 @@
 ## Day 15: [Rambunctious Recitation](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day15RambunctiousRecitation.js)
 - ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day15Part2.js)
 - ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day15Input.txt)
+## Day 16: [Ticket Translation](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day16TicketTranslation.js)
+- ## [Part 2](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day16Part2.js)
+- ## [Input File](https://github.com/PhilHuangSW/AdventCalendar2020/blob/master/day16Input.txt)
